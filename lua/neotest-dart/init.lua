@@ -170,7 +170,7 @@ function adapter.build_spec(args)
     command_parts = {
       command,
       'test',
-      position.path,
+      string.format('"%s"', position.path),
       test_argument,
       '--reporter',
       'json',
