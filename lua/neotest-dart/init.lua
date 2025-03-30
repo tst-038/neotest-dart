@@ -184,6 +184,7 @@ function adapter.build_spec(args)
   vim.list_extend(command_parts, extra_args)
 
   local strategy_config = get_strategy_config(args.strategy, position.path, test_argument)
+  local project_root = Path:new(position.path):find_upwards('pubspec.yaml'):parent().filename
   local full_command = table.concat(vim.tbl_flatten(command_parts), ' ')
 
   return {
@@ -192,6 +193,7 @@ function adapter.build_spec(args)
       results_path = results_path,
       file = position.path,
     },
+    cwd = project_root,
     strategy = strategy_config,
     stream = function(data)
       return function()
