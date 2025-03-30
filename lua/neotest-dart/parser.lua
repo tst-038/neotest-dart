@@ -146,9 +146,13 @@ local function prepare_neotest_output(test_result, unparsable_lines)
     local test_time = format_duration(test_result.time)
     table.insert(file_output, 'Elapsed: ' .. test_time)
   end
-  local flatten = vim.tbl_flatten(file_output)
-  vim.fn.writefile(flatten, fname, 'b')
-  return fname
+
+  local flatten = vim.iter(file_output):flatten():totable()
+  local data = table.concat(flatten, '\n')
+
+  local fd = assert(vim.uv.fs_open(fname, 'w', 438))
+  assert(vim.uv.fs_write(fd, data, -1))
+  assert(vim.uv.fs_close(fd))
 end
 
 local function construct_diagnostic_errors(test_result)
