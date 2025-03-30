@@ -5,7 +5,7 @@ local M = {}
 ---@param prepare_for_summary boolean? indicates that additional whitespace
 --- trimming is needed to look pretty in summary
 ---@return string
-M.remove_surrounding_quates = function(name, prepare_for_summary)
+M.remove_surrounding_quotes = function(name, prepare_for_summary)
   local trimmed = name
     :gsub("^'''(.*)'''$", '%1')
     :gsub("^'(.*)'$", '%1')
@@ -34,7 +34,7 @@ M.construct_test_name = function(position, outline)
   local name_components = {}
   for index, value in ipairs(parts) do
     if index > 1 then
-      local component = M.remove_surrounding_quates(value)
+      local component = M.remove_surrounding_quotes(value)
       table.insert(name_components, component)
     end
   end

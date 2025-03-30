@@ -70,7 +70,7 @@ function adapter.discover_positions(path)
         position.id = table.concat(parts, '::')
         position.name = outline_test_name
       else
-        position.name = utils.remove_surrounding_quates(position.name, true)
+        position.name = utils.remove_surrounding_quotes(position.name, true)
       end
     end
   end
