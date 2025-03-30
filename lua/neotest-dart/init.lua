@@ -149,7 +149,7 @@ function adapter.build_spec(args)
       command_parts = {
         command,
         'test',
-        position.path,
+        string.format('"%s"', position.path),
         '--reporter',
         'json',
       }
@@ -157,7 +157,7 @@ function adapter.build_spec(args)
       command_parts = {
         command,
         'test',
-        string.format('%s/%s', position.path, 'test'),
+        string.format('"%s/%s"', position.path, 'test'),
         '--reporter',
         'json',
       }
