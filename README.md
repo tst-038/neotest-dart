@@ -11,7 +11,7 @@ use({
   'nvim-neotest/neotest',
   requires = {
     ...,
-    'sidlatau/neotest-dart',
+    'tst-038/neotest-dart',
   }
   config = function()
     require('neotest').setup({
@@ -41,7 +41,7 @@ return {
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "sidlatau/neotest-dart"
+    "tst-038/neotest-dart",
   },
   config = function()
     require('neotest').setup({
@@ -57,7 +57,7 @@ return {
 
 -- in neotest-dart.lua
 return {
-  "sidlatau/neotest-dart",
+  "tst-038/neotest-dart",
   dependencies = {
     "nvim-neotest/neotest",
   },
